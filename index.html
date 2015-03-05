@@ -1,4 +1,33 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Artinpocket Gallery Prototype APP</title><meta name="description" content><meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no"><meta name="mobile-web-app-capable" content="yes"><link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png"><meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png"><meta name="msapplication-TileColor" content="#3F51B5"><meta name="theme-color" content="#303F9F"><script>
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Artinpocket Gallery Prototype APP</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no">
+
+  <!-- Add to homescreen meta -->
+
+  <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+
+  <!-- Add to homescreen for Internet Explorer -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#3F51B5">
+
+  <meta name="theme-color" content="#303F9F">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- Conditionally load WC polyfills -->
+  <!-- Thanks to https://github.com/geelen/x-gif for the snippet -->
+  <script>
     if ('registerElement' in document
       && 'createShadowRoot' in HTMLElement.prototype
       && 'import' in document.createElement('link')
@@ -7,4 +36,59 @@
     } else {
       document.write('<script src="/bower_components/webcomponentsjs/webcomponents.js"><\/script>');
     }
-  </script><link rel="import" href="/elements/elements.critical.vulcanized.html"></head><body unresolved><template id="app" is="auto-binding"><core-ajax id="ajax" url="/{{category}}.json" response="{{contacts}}"></core-ajax><core-media-query query="min-width: 640px" querymatches="{{largeScreen}}"></core-media-query><core-animated-pages id="pages" selected transitions="cross-fade fade-slide-up fade-scale" fit><section layout vertical><contacts-page class="page" id="contacts" contacts="{{contacts}}" cross-fade?="{{largeScreen}}" heading="{{heading}}" flex></contacts-page></section><section layout vertical><info-page class="page" id="info" contacts="{{contacts}}" cross-fade?="{{largeScreen}}" fade-scale?="{{!largeScreen}}" flex></info-page></section><section layout vertical><add-page class="page" id="add" contacts="{{contacts}}" cross-fade?="{{largeScreen}}" fade-slide-up?="{{!largeScreen}}" flex></add-page></section></core-animated-pages></template><script src="/scripts/app.js"></script></body></html>
+  </script>
+
+  <!-- build:vulcanized /elements/elements.critical.vulcanized.html -->
+  <link rel="import" href="/elements/elements.critical.html">
+  <!-- endbuild-->
+</head>
+
+<body unresolved>
+  <template id="app" is="auto-binding">
+
+    <core-ajax id="ajax"
+               url="/{{category}}.json"
+               response="{{contacts}}"></core-ajax>
+
+    <core-media-query query="min-width: 640px" queryMatches="{{largeScreen}}">
+    </core-media-query>
+
+    <!-- TODO: Hero transition for desktop -->
+    <core-animated-pages id="pages" selected="{{selected}}"
+                         transitions="cross-fade fade-slide-up fade-scale" fit>
+
+      <section layout vertical>
+        <contacts-page class="page" id="contacts" contacts="{{contacts}}"
+                       cross-fade?="{{largeScreen}}"
+                       heading="{{heading}}"
+                       flex>
+        </contacts-page>
+      </section>
+
+      <section layout vertical>
+        <info-page class="page" id="info" contacts="{{contacts}}"
+                   cross-fade?="{{largeScreen}}"
+                   fade-scale?="{{!largeScreen}}"
+                   flex>
+        </info-page>
+      </section>
+
+      <section layout vertical>
+        <add-page class="page" id="add" contacts="{{contacts}}"
+                  cross-fade?="{{largeScreen}}"
+                  fade-slide-up?="{{!largeScreen}}"
+                  flex>
+        </add-page>
+      </section>
+
+    </core-animated-pages>
+
+  </template>
+
+  <!-- build:js /scripts/app.js -->
+  <script src="/bower_components/director/build/director.js"></script>
+  <script src="/scripts/app.js"></script>
+  <!-- endbuild-->
+</body>
+
+</html>
