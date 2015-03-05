@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "name": "APP Galeries Prototipus",
+  "launch_path": "/index.html",
+  "description": "Prototipus per a una app de galeries",
+  "icons": {
+    "128": "/images/touch/icon-128x128.png"
+  },
+  "developer": {
+    "name": "ramon gil",
+    "url": "http://www.oxygen.cat/"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "display": "standalone",
+  "default_locale": "ca",
+  "permissions": {
+  },
+  "locales": {
+    "ca": {
+      "name": "APP Galeries Prototipus",
+      "description": "Prototipus per a una app de galeries"
+    }
+  }
+}

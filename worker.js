@@ -14,7 +14,7 @@ self.addEventListener('install', function(event) {
     caches.open(DEFAULT_CACHE).then(function(cache) {
       return cache.addAll([
         '/scripts/app.js',
-        '/elements/elements.critical.html',
+        '/elements/elements.critical.vulcanized.html',
         '/all.json'
       ]);
     })
