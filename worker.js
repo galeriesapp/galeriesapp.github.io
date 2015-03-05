@@ -3,8 +3,8 @@ importScripts('/bower_components/cache-polyfill/dist/serviceworker-cache-polyfil
 // The SW will be shutdown when not in use to save memory,
 // be aware that any global state is likely to disappear
 
-var DEFAULT_CACHE = 'gallery-app-static1';
-var ARTBARCELONA_CACHE = 'gallery-artbarcelona-static1';
+var DEFAULT_CACHE = 'gallery-app-static2';
+var ARTBARCELONA_CACHE = 'gallery-artbarcelona-static2';
 
 console.log('SW startup', DEFAULT_CACHE);
 
@@ -14,7 +14,7 @@ self.addEventListener('install', function(event) {
     caches.open(DEFAULT_CACHE).then(function(cache) {
       return cache.addAll([
         '/scripts/app.js',
-        '/elements/elements.critical.vulcanized.html',
+        '/elements/elements.critical.html',
         '/all.json'
       ]);
     })
